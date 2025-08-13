@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel de Pedidos</title>
+  <link rel="stylesheet" href="css/Estilos2.css">
+</head>
+<body>
+  <!-- Barra superior -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="assets/img/logo.svg" alt="Logo" height="36">
+    </div>
+    <ul class="navbar-links">
+      
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Pedidos</a></li>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#"><span class="icon-search">&#128269;</span></a></li>
+    </ul>
+  </nav>
+
+  <main class="dashboard">
+    <div class="dashboard-column">
+      <h2>Últimos Pedidos</h2>
+      <div class="dashboard-box">
+        <!-- Tabla de pedidos nuevos -->
+        <table class="tabla-pedidos">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Cliente</th>
+              <th>Producto</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#120</td>
+              <td>Juan Pérez</td>
+              <td>Vape X</td>
+              <td>
+                <button class="btn aceptar">Aceptar</button>
+                <button class="btn rechazar">Rechazar</button>
+              </td>
+            </tr>
+            <!-- Más filas... -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="dashboard-column">
+      <h2>Historial de pedidos</h2>
+      <div class="dashboard-box">
+        <!-- Tabla de pedidos aceptados/resumidos -->
+        <table class="tabla-pedidos">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Producto</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#110</td>
+              <td>Vape Y</td>
+              <td><span class="badge aceptado">Aceptado</span></td>
+            </tr>
+            <!-- Más filas... -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

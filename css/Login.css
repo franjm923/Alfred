@@ -1,0 +1,129 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.fondo-login {
+  background-image: url('../assets/BG.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; /* Importante: cubre todo sin bordes */
+  height: 100vh; /* toda la altura visible */
+  width: 100vw;  /* todo el ancho visible */
+  border: 4px solid #EE0000; /* color y grosor del borde */
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {/* Overlay for background effect */
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+.login-header {
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+  color: white;
+  font-family: 'The Seasons'; /* Fuente que mencionaste */
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  
+  gap: 4px;       /* espacio pequeño entre logo y texto */
+  padding: 0;
+  margin: 0;
+}
+
+.logo {
+  width: 60px; /* Ajusta el tamaño del logo */
+  height: auto;
+  margin: 0;
+  display: block;
+  margin-right: 4px;
+}
+.logo-text {
+  font-family: 'The Seasons';
+  font-size: 2.0rem;
+  font-weight: normal;
+  user-select: none;
+}
+
+.login-main {
+  z-index: 2;
+  position: relative;
+  margin: auto;
+  padding: 40px 36px 32px 36px;
+  background: #131313;
+  border-radius: 16px;
+  max-width: 370px;
+  width: 100%;
+  box-shadow: 0 0 40px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-main h1 {
+  margin-bottom: 14px;
+  font-size: 2rem;
+  color: #eeeeee;
+}
+
+.subtitulo {
+  margin-bottom: 25px;
+  color: #eeeeee;
+  font-size: 1rem;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.login-form > p{
+    color:  #eeeeee;
+}
+.login-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.login-form button {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+.login-form button:hover {
+  background: #1769aa;
+}
+.registro {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.95em;
+}
+.registro a {
+  color: #2196f3;
+  text-decoration: none;
+}
