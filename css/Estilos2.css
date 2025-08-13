@@ -117,3 +117,42 @@ h2 {
   font-size: 1.55em;
   margin-bottom: 14px;
 }
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  z-index: 999;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #181818;
+  padding: 20px 30px;
+  border-radius: 12px;
+  max-width: 320px;
+  width: 90%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-content label {
+  font-weight: 600;
+}
+
+.modal-content input {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
