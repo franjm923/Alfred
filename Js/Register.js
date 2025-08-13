@@ -48,5 +48,5 @@ document.querySelector('.registro-form').onsubmit = function(e) {
   localStorage.setItem('userPassword', password);
 
   alert('¡Cuenta creada con éxito!');
-  window.location.href = 'Login.html';
+  window.location.href = 'index.html';
 };
