@@ -1,0 +1,212 @@
+/* ============ Variables de diseño ============ */
+:root{
+  --bg: #0e0f13;
+  --card: #12141b;
+  --text: #e8ebf1;
+  --muted: #9aa3b2;
+  --primary: #7c5cff;       /* Cambiá estos dos para matchear tu marca */
+  --primary-600: #6947ff;
+  --accent: #00d3a7;
+
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --maxw: 1120px;
+}
+
+/* Modo claro opcional si el SO está en light */
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#f8f9fb;
+    --card:#ffffff;
+    --text:#0f1320;
+    --muted:#606a7a;
+    --shadow: 0 10px 30px rgba(0,0,0,.08);
+  }
+}
+
+/* ============ Reset y base ============ */
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: var(--text);
+  background: radial-gradient(1200px 600px at 70% -10%, rgba(124,92,255,.25), transparent 60%),
+              radial-gradient(900px 500px at -10% 20%, rgba(0,211,167,.18), transparent 60%),
+              var(--bg);
+  line-height: 1.5;
+}
+
+/* Utilidades */
+.container{
+  width: min(100% - 2rem, var(--maxw));
+  margin-inline: auto;
+}
+.center{
+  text-align: center;
+}
+img{ max-width:100%; height:auto; display:block; }
+
+/* ============ Hero ============ */
+.hero{
+  position: relative;
+  padding: clamp(64px, 10vw, 140px) 0 72px;
+  overflow: hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:
+    radial-gradient(800px 400px at 40% -10%, rgba(124,92,255,.16), transparent 60%),
+    radial-gradient(700px 360px at 100% 10%, rgba(0,211,167,.12), transparent 60%);
+  pointer-events:none;
+}
+.hero .hero-content{
+  composes: container;
+  width: min(100% - 2rem, var(--maxw));
+  margin-inline:auto;
+  display:grid;
+  gap: 28px;
+  justify-items: center;
+}
+.logo{
+  width:min(160px, 40vw);
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.25));
+}
+.hero h1{
+  margin:0;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing:-0.02em;
+  text-align:center;
+}
+.hero p{
+  margin: 6px 0 2px;
+  font-size: clamp(16px, 2.4vw, 20px);
+  color: var(--muted);
+  max-width: 800px;
+  text-align:center;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  margin-top: 10px;
+  padding: 14px 20px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-600));
+  color: white;
+  border-radius: calc(var(--radius) - 4px);
+  text-decoration:none;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.btn:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+.btn:active{ transform: translateY(0); filter: brightness(.98); }
+.btn:focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ============ Features ============ */
+.features{
+  padding: 64px 0;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,.02) 18%, transparent 90%);
+}
+.features > h2{
+  text-align:center;
+  font-size: clamp(24px, 3.4vw, 36px);
+  margin: 0 0 24px;
+}
+.feature-list{
+  composes: container;
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+}
+.feature{
+  grid-column: span 12;
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.05);
+  padding: 22px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform .6s ease, opacity .6s ease, border-color .2s ease;
+}
+.feature h3{
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+.feature p{
+  margin:0;
+  color: var(--muted);
+}
+
+/* Responsive: cards en grilla */
+@media (min-width: 640px){
+  .feature{ grid-column: span 6; }
+}
+@media (min-width: 980px){
+  .feature{ grid-column: span 4; }
+}
+
+/* Estado visible (lo setea JS con IntersectionObserver) */
+.feature.reveal-in{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ Demo ============ */
+.demo{
+  padding: 60px 0;
+}
+.demo h2{
+  text-align:center;
+  font-size: clamp(22px, 3.2vw, 32px);
+  margin: 0 0 20px;
+}
+.demo .container{
+  display:grid;
+  gap: 22px;
+  justify-items:center;
+}
+.demo img{
+  border-radius: calc(var(--radius) + 6px);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: var(--shadow);
+  width: min(920px, 92vw);
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  background: #0b0c10;
+}
+
+/* ============ CTA ============ */
+.cta{
+  padding: 70px 0 90px;
+  text-align:center;
+}
+.cta h2{
+  margin:0 0 8px;
+  font-size: clamp(24px, 3.6vw, 38px);
+}
+.cta p{
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+/* ============ Accesibilidad y motion ============ */
+@media (prefers-reduced-motion: reduce){
+  .btn, .feature{ transition: none !important; }
+}
+
+/* ============ Pequeños extras ============ */
+/* Suave “focus ring” para cualquier link o botón */
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+/* Ajuste del ancho del contenedor dentro de secciones que no lo tenían explícito */
+.hero .hero-content,
+.features .feature-list,
+.demo .container{ width: min(100% - 2rem, var(--maxw)); margin-inline: auto; }

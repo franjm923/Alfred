@@ -1,35 +1,121 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Alfred, tu ayudante de gestion!</title>
-  <link rel="icon" href="assets/AF32.png" type="image/png">
-  <link rel="stylesheet" href="css/Login.css">
-  
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alfred — Tu compañero para pedidos y turnos</title>
+  <link rel="icon" href="assets/AF32.png" type="image/png" />
+  <!-- Titular manuscrito estilo Odoo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/landing.css" />
 </head>
 <body>
-  <div class="fondo-login">
-    
-    <div class="overlay"></div>
-    <header class="login-header">
-      <div class="logo-container">
-        <img src="assets/AF32.png" alt="Logo" class="logo">
-        <span class="logo-text">Alfred</span>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="#presentacion" class="brand">
+        <img src="assets/AF32.png" alt="Logo Alfred" class="brand-logo" />
+        <span class="brand-text">Alfred</span>
+      </a>
+    </div>
+    <ul class="navbar-links">
+      <li><a href="#presentacion">Presentación</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#cta">Contacto</a></li>
+      <li class="divider"></li>
+      <li><a class="login" href="Register.html">Crear cuenta</a></li>
+      <!-- Cambiá este archivo si tu login tiene otro nombre -->
+      <li><a class="login" href="index-login.html">Ingresar</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Abrir menú">☰</button>
+  </nav>
+
+  <main>
+    <!-- HERO: estilo Odoo -->
+    <section id="presentacion" class="section hero reveal">
+      <div class="hero-inner">
+        <div class="display">
+          <span class="doodle-rocket" aria-hidden="true">🚀</span>
+          <h1 class="hand-title">
+            <span class="line1 hand">Atendé más rápido</span><br>
+            <span class="line2 hand hand-underline">y no dejes pedidos sin respuesta</span>
+          </h1>
+          <p class="lead lead-muted">
+            No te preocupes más por <strong>mensajes pendientes</strong>, <strong>solicitudes de turno</strong> o
+            <strong>órdenes por confirmar</strong>. Relajate y dejá que <strong>Alfred</strong> haga el trabajo por vos.
+          </p>
+          <div class="hero-ctas">
+            <a href="#video" class="btn btn-primary">Comenzá ahora, es gratis</a>
+            <a href="#cta" class="btn btn-ghost">Contactá a un asesor</a>
+          </div>
+        </div>
       </div>
-    </header>
-    <main class="login-main">
-      <h1>¡Bienvenido!</h1>
-      <p class="subtitulo">Iniciá sesión para gestionar tus pedidos</p>
-      <form class="login-form">
-        <input type="email" id="email" placeholder="Correo electrónico" required>
-        <input type="password" id="password" placeholder="Contraseña" required>
-         <button type="submit">Ingresar</button>
-        <p class="registro">¿No tenés cuenta? <a href="Register.html">Registrate</a></p>
-      </form>
-    </main>
-  </div>
-  <script src="Js/Login.js"></script>
+
+      <!-- Onda inferior -->
+      <svg class="hero-wave" viewBox="0 0 1440 110" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,64 C240,128 480,0 720,32 C960,64 1200,128 1440,64 L1440,160 L0,160 Z" fill="#ffffff"></path>
+      </svg>
+    </section>
+
+    <!-- Preview del panel (captura de tu Home) -->
+    <section class="section hero-preview-section reveal">
+      <div class="hero-preview">
+        <img src="assets/preview-dashboard.png" alt="Vista previa del panel de pedidos de Alfred" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Sección 2: Video / Demo -->
+    <section id="video" class="section video-section reveal">
+      <div class="section-header">
+        <h2>Así trabaja Alfred</h2>
+        <p>Un vistazo a cómo gestiono tus pedidos y turnos, y cómo fui desarrollado.</p>
+      </div>
+
+      <div class="video-frame">
+        <!-- Video local (reemplazá cuando lo tengas) -->
+        <video controls preload="metadata" poster="assets/BG.jpg">
+          <source src="assets/demo.mp4" type="video/mp4" />
+          Tu navegador no soporta el video HTML5.
+        </video>
+
+        <!-- Alternativa YouTube:
+        <div class="iframe-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID"
+            title="Demo Alfred"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        -->
+      </div>
+
+      <ul class="bullets">
+        <li>📦 <strong>Pedidos:</strong> recibo, organizo y te ayudo a aceptar/rechazar al instante.</li>
+        <li>🗓️ <strong>Turnos:</strong> calendario inteligente para evitar solapamientos y recordar citas.</li>
+        <li>⚡ <strong>Siempre activo:</strong> notificaciones y flujos simples para no perder nada.</li>
+      </ul>
+    </section>
+
+    <!-- Sección 3: CTA final -->
+    <section id="cta" class="section cta-section reveal">
+      <div class="cta-card">
+        <h2>¿Trabajamos juntos?</h2>
+        <p>Si te gustó lo que viste, me encantaría acompañarte en tu operación diaria. Configuro tu flujo de pedidos y turnos en minutos.</p>
+        <div class="cta-actions">
+          <a href="Register.html" class="btn btn-primary">Empezar ahora</a>
+          <a href="index-login.html" class="btn btn-ghost">Iniciar sesión</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Alfred — Hecho con ❤️ para simplificar tu gestión</p>
+  </footer>
+
+  <script src="Js/index.js"></script>
 </body>
 </html>
-
