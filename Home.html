@@ -1,227 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sistema de Gestión de Pedidos</title>
-
-  <!-- Tailwind CDN PRIMERO -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fuentes / iconos -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css">
-
-  <!-- Tu CSS viejo (si lo necesitás) -->
-  <link rel="stylesheet" href="css/Estilos2.css" />
-
-  <!-- El **tema Alfred** DEBE ir ÚLTIMO para pisar todo -->
-  <link rel="stylesheet" href="css/theme-cdn.css?v=2" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Pedidos</title>
+    <link rel="stylesheet" href="css/Estilos2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css">
 </head>
-
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header class="header">
-      <div class="logo">
-        <div class="logo-icon">A</div>
-      </div>
-      <nav class="nav">
-        <a href="#" class="nav-link">About Us</a>
-        <a href="#" class="nav-link">Pedidos</a>
-        <a href="#" class="nav-link active">Home</a>
-        <a href="#" class="nav-link">Profile</a>
-      </nav>
-    </header>
-
-    <!-- Main -->
-    <main class="main-content">
-      <div class="dashboard-grid">
-        <!-- Últimos Pedidos -->
-        <section class="card">
-          <div class="card-header">
-            <h2 class="card-title">
-              <i data-lucide="clock" class="icon"></i>
-              Últimos Pedidos
-            </h2>
-          </div>
-          <div class="card-content">
-            <div class="table-container">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Cliente</th>
-                    <th>Producto</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody id="recent-orders">
-                  <tr>
-                    <td class="order-id">#120</td>
-                    <td>
-                      <div class="customer-info">
-                        <div class="customer-avatar">JP</div>
-                        <span>Juan Pérez</span>
-                      </div>
-                    </td>
-                    <td>Vape X</td>
-                    <td><span class="badge badge-pending">Pendiente</span></td>
-                    <td>
-                      <div class="action-buttons">
-                        <button class="btn btn-success" onclick="acceptOrder(120)">
-                          <i data-lucide="check" class="icon-sm"></i>
-                          Aceptar
-                        </button>
-                        <button class="btn btn-danger" onclick="rejectOrder(120)">
-                          <i data-lucide="x" class="icon-sm"></i>
-                          Rechazar
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="order-id">#119</td>
-                    <td>
-                      <div class="customer-info">
-                        <div class="customer-avatar">MG</div>
-                        <span>María García</span>
-                      </div>
-                    </td>
-                    <td>Vape Pro</td>
-                    <td><span class="badge badge-payment-pending">Pendiente de Pago</span></td>
-                    <td>
-                      <button class="btn btn-primary" onclick="markAsPaid(119)">
-                        <i data-lucide="credit-card" class="icon-sm"></i>
-                        Marcar Pagado
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">A</div>
             </div>
-          </div>
-        </section>
+            <nav class="nav">
+                <a href="#" class="nav-link">About Us</a>
+                <a href="#" class="nav-link">Pedidos</a>
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#" class="nav-link">Profile</a>
+            </nav>
 
-        <!-- Historial de Pedidos -->
-        <section class="card">
-          <div class="card-header">
-            <h2 class="card-title">
-              <i data-lucide="history" class="icon"></i>
-              Historial de Pedidos
-            </h2>
-          </div>
-          <div class="card-content">
-            <div class="table-container">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Cliente</th>
-                    <th>Producto</th>
-                    <th>Estado</th>
-                    <th>Total</th>
-                  </tr>
-                </thead>
-                <tbody id="order-history">
-                  <tr>
-                    <td class="order-id">#118</td>
-                    <td>
-                      <div class="customer-info">
-                        <div class="customer-avatar">CL</div>
-                        <span>Carlos López</span>
-                      </div>
-                    </td>
-                    <td>Vape Y</td>
-                    <td><span class="badge badge-paid">Pagado</span></td>
-                    <td class="price">$1,200.00</td>
-                  </tr>
-                  <tr>
-                    <td class="order-id">#117</td>
-                    <td>
-                      <div class="customer-info">
-                        <div class="customer-avatar">AR</div>
-                        <span>Ana Rodríguez</span>
-                      </div>
-                    </td>
-                    <td>Vape Z</td>
-                    <td><span class="badge badge-rejected">Rechazado</span></td>
-                    <td class="price">-</td>
-                  </tr>
-                </tbody>
-              </table>
+            <!-- Info del usuario -->
+            <div class="user-info">
+                <img id="avatar" class="user-avatar" src="assets/default-avatar.png" alt="avatar">
+                <span id="nombreUsuario" class="user-name">Cargando...</span>
+                <button class="btn btn-secondary" onclick="logout()">Salir</button>
             </div>
-          </div>
-        </section>
-      </div>
-    </main>
-  </div>
+        </header>
 
-  <!-- Modal Detalles de Envío -->
-  <div id="shipping-modal" class="modal" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="shipping-title">
-      <div class="modal-header">
-        <h3 id="shipping-title" class="modal-title">Detalles del Envío</h3>
-        <button class="modal-close" onclick="closeShippingModal()" aria-label="Cerrar">
-          <i data-lucide="x" class="icon-sm"></i>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="shipping-cost">Precio de envío:</label>
-          <div class="input-group">
-            <span class="input-prefix">$</span>
-            <input type="number" id="shipping-cost" placeholder="150.00" step="0.01">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="total-cost">Precio total:</label>
-          <div class="input-group">
-            <span class="input-prefix">$</span>
-            <input type="number" id="total-cost" placeholder="1200.00" step="0.01">
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="closeShippingModal()">Cancelar</button>
-        <button class="btn btn-primary" onclick="confirmShipping()">
-          <i data-lucide="check" class="icon-sm"></i>
-          Confirmar
-        </button>
-      </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dashboard-grid">
+                <!-- Últimos Pedidos -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <i data-lucide="clock" class="icon"></i>
+                            Últimos Pedidos
+                        </h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="orders-grid" id="recent-orders">
+                            <!-- Aquí se cargarán dinámicamente los pedidos del usuario -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Historial de Pedidos -->
+                <section class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <i data-lucide="history" class="icon"></i>
+                            Historial de Pedidos
+                        </h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="orders-grid" id="order-history">
+                            <!-- Aquí se cargarán dinámicamente los pedidos del usuario -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
     </div>
-  </div>
 
-  <!-- Overlay -->
-  <div id="modal-overlay" class="modal-overlay"></div>
+    <!-- Modal para Detalles del Envío -->
+    <div id="shipping-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Detalles del Envío</h3>
+                <button class="modal-close" onclick="closeShippingModal()">
+                    <i data-lucide="x" class="icon-sm"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="shipping-cost">Precio de envío:</label>
+                    <div class="input-group">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="shipping-cost" placeholder="150.00" step="0.01">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="total-cost">Precio total:</label>
+                    <div class="input-group">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="total-cost" placeholder="1200.00" step="0.01">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeShippingModal()">Cancelar</button>
+                <button class="btn btn-primary" onclick="confirmShipping()">
+                    <i data-lucide="check" class="icon-sm"></i>
+                    Confirmar
+                </button>
+            </div>
+        </div>
+    </div>
 
-  <!-- Scripts (solo utilitarios) -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.lucide && lucide.createIcons) lucide.createIcons();
-    });
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay"></div>
 
-    // Stubs: conectalos a tu backend
-    function acceptOrder(id){ openShippingModal(); }
-    function rejectOrder(id){ alert("Pedido #" + id + " rechazado"); }
-    function markAsPaid(id){ alert("Pedido #" + id + " marcado como pagado"); }
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="Js/Home.js"></script>
 
-    function openShippingModal(){
-      document.getElementById('shipping-modal').classList.add('active');
-      document.getElementById('modal-overlay').classList.add('active');
-    }
-    function closeShippingModal(){
-      document.getElementById('shipping-modal').classList.remove('active');
-      document.getElementById('modal-overlay').classList.remove('active');
-    }
-    function confirmShipping(){
-      const ship = document.getElementById('shipping-cost').value || 0;
-      const total = document.getElementById('total-cost').value || 0;
-      alert(`Envío: $${ship} · Total: $${total}`);
-      closeShippingModal();
-    }
-  </script>
+    <script>
+      const API = "https://alfred-backend-3ohw.onrender.com"; // Cambiá por tu backend en Render
+
+      async function loadMe(){
+        try {
+          const res = await fetch(`${API}/api/me`, { credentials: "include" });
+          if (!res.ok) {
+            // No está logueado → mandar a login
+            window.location.href = "Login.html";
+            return;
+          }
+          const me = await res.json();
+          document.getElementById("nombreUsuario").textContent = me.name || me.email;
+          if(me.picture){
+            document.getElementById("avatar").src = me.picture;
+          }
+        } catch (e) {
+          console.error("Error al cargar usuario", e);
+          window.location.href = "Login.html";
+        }
+      }
+
+      async function logout(){
+        await fetch(`${API}/logout`, { credentials: "include" });
+        window.location.href = "Login.html";
+      }
+
+      loadMe();
+    </script>
 </body>
 </html>

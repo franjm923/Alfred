@@ -8,10 +8,10 @@ body, html {
   background-image: url('../assets/BG.jpg');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover; /* Importante: cubre todo sin bordes */
-  height: 100vh; /* toda la altura visible */
-  width: 100vw;  /* todo el ancho visible */
-  border: 4px solid #EE0000; /* color y grosor del borde */
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  border: 4px solid #EE0000;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -19,7 +19,7 @@ body, html {
   align-items: center;
 }
 
-.overlay {/* Overlay for background effect */
+.overlay {
   position: absolute;
   top:0; left:0; right:0; bottom:0;
   background: rgba(0,0,0,0.45);
@@ -27,7 +27,6 @@ body, html {
 }
 
 .login-header {
-  
   position: fixed;
   top: 0;
   left: 0;
@@ -37,28 +36,20 @@ body, html {
   gap: 10px;
   z-index: 10;
   color: white;
-  font-family: 'The Seasons'; /* Fuente que mencionaste */
+  font-family: 'The Seasons';
 }
 .logo-container {
   display: flex;
   align-items: center;
-  
-  gap: 4px;       /* espacio pequeño entre logo y texto */
-  padding: 0;
-  margin: 0;
+  gap: 4px;
 }
-
 .logo {
-  width: 60px; /* Ajusta el tamaño del logo */
+  width: 60px;
   height: auto;
-  margin: 0;
-  display: block;
-  margin-right: 4px;
 }
 .logo-text {
   font-family: 'The Seasons';
-  font-size: 2.0rem;
-  font-weight: normal;
+  font-size: 2rem;
   user-select: none;
 }
 
@@ -71,7 +62,7 @@ body, html {
   border-radius: 16px;
   max-width: 370px;
   width: 100%;
-  box-shadow: 0 0 40px rgba(0,0,0,0.15);
+  box-shadow: 0 0 40px rgba(0,0,0,0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,6 +78,7 @@ body, html {
   margin-bottom: 25px;
   color: #eeeeee;
   font-size: 1rem;
+  text-align: center;
 }
 
 .login-form {
@@ -95,16 +87,20 @@ body, html {
   flex-direction: column;
   gap: 15px;
 }
-.login-form > p{
-    color:  #eeeeee;
+.login-form > p {
+  color:  #eeeeee;
 }
 .login-form input {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
+  background: #1f1f1f;
+  color: #fff;
 }
-
+.login-form input::placeholder {
+  color: #aaa;
+}
 .login-form button {
   background: #2196f3;
   color: #fff;
@@ -118,6 +114,7 @@ body, html {
 .login-form button:hover {
   background: #1769aa;
 }
+
 .registro {
   margin-top: 12px;
   text-align: center;
@@ -126,4 +123,63 @@ body, html {
 .registro a {
   color: #2196f3;
   text-decoration: none;
+}
+
+/* === Botón de Google === */
+.google-btn {
+  margin-top: 10px;
+  background: #fff;
+  color: #444;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.google-btn img {
+  height: 20px;
+  width: 20px;
+}
+.google-btn:hover {
+  background: #f5f5f5;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* 🔹 Responsive: Mobile */
+@media (max-width: 600px) {
+  .login-main {
+    padding: 24px 20px;
+    max-width: 90%;
+  }
+
+  .login-main h1 {
+    font-size: 1.5rem;
+  }
+
+  .subtitulo {
+    font-size: 0.9rem;
+  }
+
+  .login-form input {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .login-form button,
+  .google-btn {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .logo {
+    width: 45px;
+  }
+  .logo-text {
+    font-size: 1.5rem;
+  }
 }
