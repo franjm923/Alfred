@@ -62,7 +62,7 @@
         }
 
         // login exitoso → va al Home
-        window.location.href = "Home.html";
+        window.location.href = "/Home.html";
       } catch (err) {
         console.error(err);
         alert("Error de conexión con el servidor.");
@@ -71,7 +71,7 @@
 
     // === LOGIN CON GOOGLE ===
     document.getElementById("googleBtn").onclick = () => {
-      const returnUrl = encodeURIComponent(window.location.origin + "/Home.html");
+      const returnUrl = encodeURIComponent("https://alfredbot.com.ar/Home.html");
       window.location.href = `${API}/login/google?returnUrl=${returnUrl}`;
     };
   </script>
