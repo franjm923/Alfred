@@ -1,7 +1,9 @@
 // components/header.tsx
+"use client";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Button from "@/components/ui/button";
+
 
 export default function Header() {
   return (
@@ -28,15 +30,15 @@ export default function Header() {
               <AvatarFallback>DR</AvatarFallback>
             </Avatar>
             <Button
-              variant="secondary"
-              size="sm"
-              onClick={async () => {
-                await fetch("/api/session", { method: "DELETE" });
-                window.location.href = "/login";
-              }}
-            >
-              Salir
-            </Button>
+            variant="secondary"
+            size="sm"
+            onClick={async () => {
+              await fetch("/api/session", { method: "DELETE" });
+              window.location.href = "/login";
+            }}
+          >
+            Salir
+          </Button>
           </div>
         </div>
       </div>

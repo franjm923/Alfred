@@ -1,4 +1,5 @@
-// components/weekly-calendar.tsx
+
+"use client"; 
 import { Calendar as CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
