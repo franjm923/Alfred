@@ -26,3 +26,9 @@ yarn-error.log*
 Thumbs.db
 .idea/
 .vscode/
+FrontendWeb/node_modules/
+FrontendWeb/.next/
+FrontendWeb/out/
+FrontendWeb/dist/
+FrontendWeb/.vercel/
+.env*
