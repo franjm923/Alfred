@@ -1,26 +1,32 @@
-// middleware.ts
+// FrontendWeb/middleware.ts
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-/**
- * Rutas públicas: no requieren cookie
- * (agregá aquí tu landing si la sirves desde Next: /landing)
- */
-const PUBLIC_PATHS = [
-  "/login",
-  "/api/oauth/google/callback",
-];
+// Rutas públicas (no requieren cookie)
+const PUBLIC = ["/login", "/api/oauth/google/callback"];
 
 export function middleware(req: NextRequest) {
   try {
-    const token = req.cookies.get("alfred_token")?.value;
     const { pathname } = req.nextUrl;
 
-    // Si la URL es pública, dejá pasar
-    const isPublic = PUBLIC_PATHS.some(p => pathname.startsWith(p));
-    if (isPublic) return NextResponse.next();
+    // Dejar pasar assets, _next y APIs
+    if (
+      pathname.startsWith("/api") ||
+      pathname.startsWith("/_next") ||
+      pathname === "/favicon.ico" ||
+      pathname === "/robots.txt" ||
+      pathname === "/sitemap.xml"
+    ) {
+      return NextResponse.next();
+    }
 
-    // Si no hay token, redirigí a /login
+    // Dejar pasar rutas públicas
+    if (PUBLIC.some((p) => pathname.startsWith(p))) {
+      return NextResponse.next();
+    }
+
+    // Proteger el resto
+    const token = req.cookies.get("alfred_token")?.value;
     if (!token) {
       const url = req.nextUrl.clone();
       url.pathname = "/login";
@@ -28,30 +34,15 @@ export function middleware(req: NextRequest) {
       return NextResponse.redirect(url);
     }
 
-    // Si ya hay token y el user intenta ir a /login, mandalo al Home
-    if (token && pathname.startsWith("/login")) {
-      const url = req.nextUrl.clone();
-      url.pathname = "/";
-      url.search = "";
-      return NextResponse.redirect(url);
-    }
-
     return NextResponse.next();
-  } catch (err) {
-    // Evitá un 500 si algo raro ocurre: log y dejá pasar
-    console.error("[middleware] error:", err);
+  } catch (e) {
+    // Nunca tirar la app por el middleware
+    console.error("[middleware] ", e);
     return NextResponse.next();
   }
 }
 
-/**
- * ¡Importante!
- * El matcher debe usar paths reales de URL, NO nombres de route groups.
- * Excluimos assets y APIs para no interferir.
- */
 export const config = {
-  matcher: [
-    // Aplica a todo salvo assets estáticos y APIs
-    "/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)",
-  ],
+  // Aplica a todo salvo lo excluido arriba en el cuerpo
+  matcher: ["/:path*"],
 };
