@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-const BACKEND_URL = process.env.BACKEND_URL!;
+const BACKEND_URL = process.env.BACKEND_URL;
 
 export async function GET() {
   return NextResponse.json({ ok: true, msg: "session route ok" });
@@ -19,14 +19,26 @@ export async function POST(req: Request) {
     password = String(form.get("password") ?? "");
   }
 
-  const res = await fetch(`${BACKEND_URL}/api/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
-  const data = await res.json().catch(()=> ({}));
+  if (!BACKEND_URL) {
+    return NextResponse.redirect(new URL("/login?e=cfg", req.url), { status: 302 });
+  }
 
-  if (!res.ok || !data?.token) {
+  let data: any = {};
+  let ok = false;
+  try {
+    const res = await fetch(`${BACKEND_URL}/api/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+      cache: "no-store",
+    });
+    ok = res.ok;
+    data = await res.json().catch(()=> ({}));
+  } catch (e) {
+    ok = false;
+  }
+
+  if (!ok || !data?.token) {
     return NextResponse.redirect(new URL("/login?e=1", req.url), { status: 302 });
   }
 
