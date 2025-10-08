@@ -1,0 +1,72 @@
+/* Minimal styles for the landing - adjust to your needs */
+:root { color-scheme: light dark; }
+* { box-sizing: border-box }
+body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+.container { max-width: 1100px; margin: 0 auto; }
+.text-center { text-align: center }
+.muted { opacity: .75 }
+.lead { font-size: 1.05rem }
+.fw-700 { font-weight: 700 }
+.py-20 { padding-top: 5rem; padding-bottom: 5rem }
+.px-4 { padding-left: 1rem; padding-right: 1rem }
+.mb-0 { margin-bottom: 0 }
+.mb-4 { margin-bottom: 1rem }
+.mb-6 { margin-bottom: 1.5rem }
+.mb-8 { margin-bottom: 2rem }
+.mb-12 { margin-bottom: 3rem }
+
+/* Header */
+.site-header { position: sticky; top:0; backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,.06); background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.4)); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 64px }
+.brand { display: inline-flex; align-items: center; gap: .5rem; font-weight: 800; font-size: 1.1rem }
+.brand .icon { width: 24px; height: 24px; display: inline-block; background: url('/assets/AF32.png') no-repeat center / cover }
+
+/* Buttons */
+.btn { display:inline-flex; align-items:center; gap:.5rem; padding:.6rem 1rem; border-radius: .6rem; border: 1px solid #00000018; background:#111827; color:#fff; text-decoration: none; cursor: pointer; font-weight:600 }
+.btn-outline { background: transparent; color:#111; border-color: #11111133 }
+.btn-sm { padding: .45rem .8rem; font-size:.92rem }
+.btn-lg { padding: .85rem 1.25rem }
+.btn-primary { background:#2563eb }
+.btn-row { display:flex; gap:.75rem; justify-content:center }
+
+/* Hero */
+.hero { background: radial-gradient(ellipse at top,#f6f9ff,transparent), radial-gradient(ellipse at bottom,#eef5ff,transparent) }
+.badge { display:inline-block; padding:.35rem .6rem; border-radius: 9999px; background: #111; color:#fff; font-size:.85rem }
+.title-2 { font-size: clamp(22px, 3.5vw, 32px); font-weight: 800 }
+.accent { color:#2563eb }
+
+/* Cards grid */
+.grid.cards { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem }
+.card { border: 1px solid rgba(0,0,0,.08); border-radius: 14px; overflow: hidden; background: #fff }
+.card-content { padding: 1rem }
+.feature-icon { width:40px; height:40px; display:grid; place-items:center; background:#f2f6ff; color:#2563eb; border-radius: 10px; margin-bottom:.75rem }
+
+/* Video shell */
+.section-muted { background: linear-gradient(180deg, #fafafa, #f6f8fb) }
+.video-shell { height: 320px; border-radius: 16px; border: 1px solid rgba(0,0,0,.06); background: #141a22; overflow: hidden; position: relative }
+.video-overlay { position:absolute; inset:0; display:grid; place-items:center }
+.play-btn { width:66px; height:66px; border-radius:50%; border: none; background:#fff; color:#111; display:grid; place-items:center; box-shadow: 0 10px 30px rgba(0,0,0,.25) }
+.video-caption { position:absolute; left: 12px; bottom: 12px; color:#fff; opacity:.9 }
+
+/* Benefits */
+.benefits { display:grid; grid-template-columns: 1.2fr 1fr; gap: 2rem }
+.benefit-row { display:flex; gap:.75rem; margin-bottom: 1rem }
+.benefit-row .tick { color:#22c55e }
+.benefit-visual { border: 1px dashed #11111122; border-radius: 14px; height: 100%; display:grid; place-items:center }
+.benefit-bot { width:80px; height:80px; color:#111 }
+
+/* CTA */
+.cta { background: linear-gradient(135deg, #111, #1f2937); color:#fff; text-align:center; border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08) }
+.cta .btn-outline { color:#fff }
+.cta-foot { opacity:.8; margin-top: 1rem }
+
+/* Footer */
+.site-footer { background:#fff; border-top: 1px solid rgba(0,0,0,.06) }
+.footer-top { display:flex; align-items:center; justify-content:space-between; gap: 1rem; margin-bottom: .75rem }
+.footer-links { display:flex; gap: .75rem }
+.footer-links a { color: inherit; opacity:.8; text-decoration:none }
+.footer-bottom { opacity:.65; font-size:.9rem }
+
+@media (max-width: 860px){
+  .benefits { grid-template-columns: 1fr; }
+}
