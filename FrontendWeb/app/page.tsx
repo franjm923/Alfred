@@ -1,7 +1,15 @@
+"use client";
 // app/page.tsx
-import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
+// Nota: idealmente este archivo no debería existir para que "/" use el rewrite a /index.html.
+// Si por alguna razón Next mantiene el route "/", hacemos un redirect del lado del cliente
+// hacia el landing estático en /index.html.
 export default function RootPage() {
-  // Redirige la raíz a /home para evitar 404/500 tras login/callback
-  redirect("/home");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.location.replace("/index.html");
+    }
+  }, []);
+  return null;
 }
