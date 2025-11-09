@@ -10,16 +10,17 @@ export function LoginForm() {
   const [password, setPassword] = useState("");
 
   const handleGoogleSignIn = () => {
-    // TODO: redirigir a tu endpoint OAuth del backend cuando lo tengas:
-    // window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`;
-    console.log("Google Sign In");
+    // Obtener la URL del backend desde las variables de entorno
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:10000";
+    // Redirigir al endpoint de OAuth de Google en el backend
+    window.location.href = `${backendUrl}/login/google`;
   };
 
   return (
     <div className="w-full max-w-md bg-card border border-border rounded-2xl p-8 space-y-6">
       <div className="text-center space-y-3">
         <h1 className="text-3xl font-bold text-foreground">Iniciar sesión</h1>
-        <p className="text-muted-foreground text-sm">Ingresa a tu cuenta</p>
+        <p className="text-muted-foreground text-sm">Ingresa a tu cuenta de Alfred</p>
       </div>
 
       <Button
@@ -87,9 +88,9 @@ export function LoginForm() {
       </div>
 
       <div className="text-center pt-2">
-        <button type="button" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-          Términos y condiciones
-        </button>
+        <a href="/" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+          ← Volver al inicio
+        </a>
       </div>
     </div>
   );

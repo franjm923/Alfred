@@ -6,8 +6,8 @@
   <title>Alfred — Turnos médicos con IA por WhatsApp</title>
   <meta name="description" content="Alfred agenda turnos por WhatsApp con IA, sincroniza con Google Calendar y te muestra los próximos turnos en la web. Pensado para médicos." />
   <link rel="icon" href="/assets/AF32.png" />
-  <!-- Usa el CSS que ya definiste con la paleta Alfred (ruta absoluta para evitar paths raros) -->
-  <link rel="stylesheet" href="/css/landing.css" />
+  <!-- Usa el CSS que ya definiste con la paleta Alfred -->
+  <link rel="stylesheet" href="css/landing.css" />
 </head>
 <body>
   <!-- Header -->
@@ -24,7 +24,7 @@
           <a href="#precios">Precios</a>
           <a href="/login" class="btn btn-sm btn-outline">Ingresar</a>
           <!-- TODO: reemplazar por tu Calendly o link a WhatsApp -->
-          <a href="https://wa.me/54911XXXXXXX?text=Hola%20quiero%20probar%20Alfred%20para%20mi%20consultorio"
+          <a href="https://wa.me/5491161616321?text=Hola%20quiero%20probar%20Alfred%20para%20mi%20consultorio"
              class="btn btn-sm btn-primary">Agendar llamada</a>
         </nav>
       </div>
@@ -47,13 +47,13 @@
 
         <div class="btn-row mb-12">
           <!-- TODO: reemplazar por tu WhatsApp (demo/comercial) -->
-          <a class="btn btn-primary btn-lg"
-             href="https://wa.me/54911XXXXXXX?text=Hola%20quiero%20ver%20una%20demo%20de%20Alfred">
+          <a id="btn-agendar" class="btn btn-primary btn-lg"
+             href="https://wa.me/5491161616321?text=Hola%20quiero%20ver%20una%20demo%20de%20Alfred">
             Probar por WhatsApp
           </a>
           <!-- TODO: reemplazar por tu Calendly o form -->
-          <a class="btn btn-outline btn-lg"
-             href="https://calendly.com/TU-CALENDLY/alfred-demo">
+          <a id="btn-demo" class="btn btn-outline btn-lg"
+             href="https://calendly.com/franjm923/alfred-demo">
             Agendar una llamada
           </a>
         </div>
@@ -221,16 +221,16 @@
         <p class="muted mb-8">Te ayudamos a implementar Alfred en tu consultorio en minutos.</p>
         <div class="btn-row">
           <!-- TODO: WhatsApp comercial -->
-          <a class="btn btn-primary btn-lg"
-             href="https://wa.me/54911XXXXXXX?text=Quiero%20agendar%20una%20llamada%20por%20Alfred">
+          <a id="cta-agendar" class="btn btn-primary btn-lg"
+             href="https://wa.me/5491161616321?text=Quiero%20agendar%20una%20llamada%20por%20Alfred">
             Hablar por WhatsApp
           </a>
           <!-- TODO: Calendly -->
-          <a class="btn btn-outline btn-lg" href="https://calendly.com/TU-CALENDLY/alfred-demo">
+          <a class="btn btn-outline btn-lg" href="https://calendly.com/franjm923/alfred-demo">
             Agendar una llamada
           </a>
         </div>
-        <div class="cta-foot">¿Ya tenés cuenta? <a href="http/login">Ingresá acá</a>.</div>
+        <div class="cta-foot">¿Ya tenés cuenta? <a href="/login">Ingresá acá</a>.</div>
       </div>
     </section>
   </main>
@@ -257,6 +257,17 @@
     <script>
       // año dinámico menor JS posible
       document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Asegurar navegación correcta a rutas de Next.js
+      document.addEventListener('DOMContentLoaded', function() {
+        const loginLinks = document.querySelectorAll('a[href="/login"]');
+        loginLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = '/login';
+          });
+        });
+      });
     </script>
   </footer>
 </body>

@@ -23,6 +23,13 @@ export const CardTitle = React.forwardRef<HTMLHeadingElement, React.ComponentPro
 );
 CardTitle.displayName = "CardTitle";
 
+export const CardDescription = React.forwardRef<HTMLParagraphElement, React.ComponentPropsWithoutRef<"p">>(
+  ({ className, ...props }, ref) => (
+    <p ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />
+  )
+);
+CardDescription.displayName = "CardDescription";
+
 export function CardContent(props: React.HTMLAttributes<HTMLDivElement>) {
   return <div className={cn("p-6 pt-0", props.className)} {...props} />;
 }

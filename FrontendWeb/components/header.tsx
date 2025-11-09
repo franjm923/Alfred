@@ -2,7 +2,7 @@
 "use client";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 
 export default function Header() {
@@ -16,10 +16,9 @@ export default function Header() {
               <span className="text-lg font-bold text-primary-foreground">A</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6 text-sm">
-              <Link href="#" className="text-muted-foreground hover:text-foreground">Acerca de</Link>
+              <Link href="/home" className="text-muted-foreground hover:text-foreground">Home</Link>
               <Link href="#" className="text-muted-foreground hover:text-foreground">Turnos</Link>
-              <Link href="#" className="font-medium text-foreground">Home</Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground">Perfil</Link>
+              <Link href="/settings" className="text-muted-foreground hover:text-foreground">Configuración</Link>
             </nav>
           </div>
 
@@ -30,15 +29,16 @@ export default function Header() {
               <AvatarFallback>DR</AvatarFallback>
             </Avatar>
             <Button
-            variant="secondary"
-            size="sm"
-            onClick={async () => {
-              await fetch("/api/session", { method: "DELETE" });
-              window.location.href = "/login";
-            }}
-          >
-            Salir
-          </Button>
+              variant="secondary"
+              size="sm"
+              onClick={async () => {
+                const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000';
+                await fetch(`${backendUrl}/logout`, { credentials: 'include' });
+                window.location.href = "/login";
+              }}
+            >
+              Salir
+            </Button>
           </div>
         </div>
       </div>

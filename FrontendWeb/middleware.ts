@@ -2,17 +2,14 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-// Middleware no-op seguro; si falla por cualquier motivo, continúa la cadena
-export function middleware(_req: NextRequest) {
-  try {
-    return NextResponse.next();
-  } catch {
-    return NextResponse.next();
-  }
+// Middleware simple
+export function middleware(req: NextRequest) {
+  return NextResponse.next();
 }
 
-// Patrón recomendado por Next para evitar estáticos y API
-// https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
+// Matcher para rutas protegidas
 export const config = {
-  matcher: ["/home/:path*", "/login/:path*"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|assets|css).*)",
+  ],
 };
